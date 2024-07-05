@@ -1,6 +1,7 @@
 # Ticket Management Backend
 
 [Link to project](https://tickets-backend-50ced0005faa.herokuapp.com/)
+[Link to Swagger Documentation](https://tickets-backend-50ced0005faa.herokuapp.com/api-docs)
 
 This is a backend service for managing customer support tickets. The system allows users to create, update, and track support tickets. It includes functionalities such as user registration, ticket assignment, and notifications. The backend is built with Node.js, Express, and MongoDB, and uses JWT for authentication and role-based access control.
 
@@ -45,6 +46,7 @@ This is a backend service for managing customer support tickets. The system allo
 ## API Documentation
 
 API documentation is available at `/api-docs` when the server is running.
+
 
 ## Routes
 
@@ -113,6 +115,8 @@ API documentation is available at `/api-docs` when the server is running.
         "assignedTo", "support@example.com"
       }
     ```
+
+
 ## License
 
 This project is licensed under the Apache License.
