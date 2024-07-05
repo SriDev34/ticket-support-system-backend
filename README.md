@@ -51,7 +51,9 @@ API documentation is available at `/api-docs` when the server is running.
 ### User Routes
 
 - **Register a new user**: `POST /api/users/register`
-  - Request body:
+  - URL: `/api/users/register`
+  - Method: `POST`
+  - Body:
     ```json
     {
       "name": "example_name",
@@ -60,49 +62,57 @@ API documentation is available at `/api-docs` when the server is running.
     }
     ```
 
-- **Login a user**: `POST /api/users/login`
-  - Request body:
+- **Login user**: `POST /api/users/login`
+  - URL: `/api/users/login`
+  - Method: `POST`
+  - Body:
     ```json
     {
+      "name": "example_name",
       "email": "example_email",
       "password": "example_password"
     }
     ```
 
-- **Get all users** (Admin only): `GET /api/users`
+- **Get all users (Admin only)**: `POST /api/users`
+  - URL: `/api/users`
+  - Method: `GET`
+  - Headers:
+    ```makefile
+      x-auth-token: <your_jwt_token>
+    ```
 
 ### Ticket Routes
 
 - **Create a ticket**: `POST /api/tickets`
-  - Request body:
+  - URL: `/api/tickets`
+  - Method: `POST`
+  - Body:
     ```json
-    {
-      "title": "example_title",
-      "description": "example_description"
-    }
+         {
+        "title": "Issue with login",
+        "description": "Unable to login with correct credentials",
+        "email": "user@example.com"
+      }
     ```
 
-- **Update a ticket**: `PUT /api/tickets/:id`
-  - Request body:
+  - **Get Tickets (Support and Admin)**: `POST /api/tickets`
+  - URL: `/api/tickets`
+  - Method: `GET`
+
+- **Delete ticket (Admin only)**: `DELETE /api/tickets/:id`
+  - URL: `/api/tickets/:id`
+  - Method: `Delete`
+ 
+**Assign a ticket (Support and admin)**: `PUT /api/tickets/assign/:id`
+  - URL: `/api/tickets/assign/:id`
+  - Method: `PUT`
+  - Body:
     ```json
-    {
-      "title": "new_title",
-      "description": "new_description"
-    }
+         {
+        "assignedTo", "support@example.com"
+      }
     ```
-
-- **Delete a ticket**: `DELETE /api/tickets/:id`
-
-- **Assign a ticket**: `PUT /api/tickets/assign/:id`
-  - Request body:
-    ```json
-    {
-      "assignedTo": "user_id"
-    }
-    ```
-
-- **Get all tickets**: `GET /api/tickets`
-
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache License.
