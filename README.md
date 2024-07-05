@@ -77,6 +77,19 @@ API documentation is available at `/api-docs` when the server is running.
     }
     ```
 
+- **Register new support agent (Admin only)**: `POST /api/users/login`
+  - URL: `/api/users/registerSupport`
+  - Method: `POST`
+  - Body:
+    ```json
+    {
+      "name": "example_name",
+      "email": "example_email",
+      "password": "example_password"
+    }
+    ```
+
+
 - **Get all users (Admin only)**: `POST /api/users`
   - URL: `/api/users`
   - Method: `GET`
@@ -87,8 +100,8 @@ API documentation is available at `/api-docs` when the server is running.
 
 ### Ticket Routes
 
-- **Create a ticket**: `POST /api/tickets`
-  - URL: `/api/tickets`
+- **Create a ticket**: `POST /api/tickets/createTicket`
+  - URL: `/api/tickets/createTicket`
   - Method: `POST`
   - Body:
     ```json
@@ -99,7 +112,8 @@ API documentation is available at `/api-docs` when the server is running.
       }
     ```
 
-  - **Get Tickets (Support and Admin)**: `POST /api/tickets`
+
+- **Get Tickets (Support and Admin)**: `POST /api/tickets`
   - URL: `/api/tickets`
   - Method: `GET`
 
@@ -120,4 +134,4 @@ API documentation is available at `/api-docs` when the server is running.
 
 ## License
 
-This project is licensed under the Apache License.
+This project is licensed under the Apache 2.0 License.
