@@ -1,0 +1,253 @@
+{
+"swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Support Ticket System API",
+    "description": "API documentation for the Support Ticket System. \n \n Admin can do everything support and user can do. \n \n "
+
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "paths": {
+    "/api/users/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "All three parameters are required to register for a new account.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User registered successfully"
+          },
+				"500":{
+					"description": "server error"
+				}
+        }
+      }
+    },
+    "/api/users/registerSupport": {
+      "post": {
+        "summary": "Register a new support user",
+        "tags": ["Admin"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Only Admin can make a new support agent user. All three parameters are required.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User registered support user successfully"
+          },
+				"500":{
+					"description": "server error"
+				}
+        }
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "summary": "Login a user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Make sure you have registered already. This endpoint will return a JWT Token. Once you have attained the token, in the headers section, type as follows. 'x-auth-token: your JWT token'. You can now access the rest of the API.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in successfully"
+          },
+			"500":{
+				"description": "server error"
+			}
+        }
+      }
+    },
+	"/api/tickets/createTicket": {
+		"post":{
+			"summary": "Create New Ticket.",
+			"tags":["User"],
+			"parameters":[
+				{
+				"in" : "body",
+				"title" : "string",
+				"description" : "When you create a ticket please use the email you want to get update ticket notifications for.",
+				"email": "string",
+				"schema":{
+					"$ref": "#/definitions/Ticket"
+				}
+				}
+			],
+			"responses":{
+				"200":{
+					"description": "created a new ticket successfully"
+				},
+				"500":{
+					"description": "server error"
+				}
+			}
+		}
+	},
+	"/api/users/": {
+		"get":{
+			"summary": "Get list of Users.",
+			"tags":["Admin"],
+			"parameters":[
+
+			],
+			"responses":{
+				"200":{
+					"description": "retrieved all users successfully"
+				}
+			}
+		}
+	},
+	"/api/tickets/": {
+		"get":{
+			"summary": "Retrieves a list of all tickets.",
+			"tags":["Support"],
+			"responses":{
+				"200":{
+					"description": "created a new ticket successfully"
+				},
+				"500":{
+					"description": "server error"
+				}
+			}
+		}
+	},
+	"api/tickets/id": {
+		"delete":{
+			"summary": "Delete ticket with certain ticket id",
+			"tags":["Admin"],
+			"responses":{
+				"200":{
+					"description": "deleted ticket successfully"
+				},
+				"500":{
+					"description": "server error"
+				}
+			}
+		}
+	},
+	"/api/tickets/id": {
+		"put":{
+			"summary": "Modify ticket with certain id. Email and Status modification is optional",
+			"tags":["Support"],
+			"parameters":[
+				{
+					"in" : "body",
+					"description" : "Sends email notification on potential status change when changed. ",
+					"schema":{
+						"$ref": "#/definitions/Ticket"
+					}
+
+				}
+			],
+			"responses":{
+				"200":{
+					"description": "edited ticket successfully"
+				},
+				"500":{
+					"description": "server error"
+				}
+			}
+		}
+	},
+	"/api/tickets/assign/id": {
+		"put":{
+			"summary": "Assign Ticket with the email of the support agent to a support ticket.",
+			"tags":["Support"],
+			"parameters":[
+				{
+					"in" : "body",
+					"description": "This will send an email notification when to the user that created the ticket to show the email of the support agent that is assigned.",
+					"schema":{
+						"$ref": "#/definitions/Email"
+					}
+
+				}
+			],
+			"responses":{
+				"200":{
+					"description": "assigned ticket to support user"
+				},
+				"500":{
+					"description": "server error"
+				}
+			}
+		}
+	},
+	"/api-docs": {
+		"get":{
+			"summary": "Swagger API documentation for this API",
+			"tags":["User"]
+		}
+	}
+
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+	"Email":{
+		"type":"object",
+		"properties": {
+			"assignedTo":{
+				"type" : "string"
+			},
+			"status":{
+				"type" : "string"
+			}
+		}
+	},
+	"Ticket":{
+		"type":"object",
+		"properties":{
+			"title":{
+				"type":"string"
+			},
+			"description":{
+				"type":"string"
+			},
+			"email":{
+				"type":"string"
+			},
+			"status":{
+				"type" : "string"
+			}
+		}
+	}
+  }
+}
+
