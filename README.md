@@ -127,8 +127,20 @@ API documentation is available at `/api-docs` when the server is running.
   - Body:
     ```json
          {
-        "assignedTo", "support@example.com"
+        "assignedTo", "support@example.com",
+        "status" : "string"
       }
+    ```
+**Motify a ticket (Support and admin)**: `PUT /api/tickets/:id`
+  - URL: `/api/tickets/:id`
+  - Method: `PUT`
+  - Body:
+    ```json
+        {
+          "title": "string",
+          "description": "string",
+          "email": "string"
+        }
     ```
 
 
