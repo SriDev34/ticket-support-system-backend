@@ -121,7 +121,7 @@ API documentation is available at `/api-docs` when the server is running.
   - URL: `/api/tickets/:id`
   - Method: `Delete`
  
-**Assign a ticket (Support and admin)**: `PUT /api/tickets/assign/:id`
+- **Assign a ticket (Support and admin)**: `PUT /api/tickets/assign/:id`
   - URL: `/api/tickets/assign/:id`
   - Method: `PUT`
   - Body:
@@ -131,7 +131,7 @@ API documentation is available at `/api-docs` when the server is running.
         "status" : "string"
       }
     ```
-**Modify a ticket (Support and admin)**: `PUT /api/tickets/:id`
+- **Modify a ticket (Support and admin)**: `PUT /api/tickets/:id`
   - URL: `/api/tickets/:id`
   - Method: `PUT`
   - Body:
