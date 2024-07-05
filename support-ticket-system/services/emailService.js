@@ -33,7 +33,7 @@ exports.sendNotification = (to, subject, text) => {
 	  ishtml: 'false',
 	  sendto: to,
 	  name: 'Support Ticket System API',
-	  replyTo: 'adityadevaguptapu383@gmail.com',
+	  replyTo: '',
 	  title: subject,
 	  body: text
 	}));
