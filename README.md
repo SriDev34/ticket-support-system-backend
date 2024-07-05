@@ -36,32 +36,6 @@ This is a backend service for managing customer support tickets. The system allo
 - WebSockets
 - Swagger
 
-## Setup Instructions
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/ticket-backend-management.git
-    cd ticket-backend-management
-    ```
-
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
-
-3. Set up environment variables:
-    Create a `.env` file in the root directory and add the following:
-    ```
-    PORT=5000
-    MONGO_URI=your_mongodb_connection_string
-    JWT_SECRET=your_jwt_secret
-    ```
-
-4. Start the server:
-    ```bash
-    npm start
-    ```
-
 ## Environment Variables
 
 - `PORT`: The port on which the server will run (default: 5000)
