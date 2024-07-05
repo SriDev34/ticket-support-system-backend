@@ -131,7 +131,7 @@ API documentation is available at `/api-docs` when the server is running.
         "status" : "string"
       }
     ```
-**Motify a ticket (Support and admin)**: `PUT /api/tickets/:id`
+**Modify a ticket (Support and admin)**: `PUT /api/tickets/:id`
   - URL: `/api/tickets/:id`
   - Method: `PUT`
   - Body:
